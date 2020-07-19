@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body>
+<div align="center" style="font-size: 30px">
+    <tr><a href="add.html" th:href="@{/add}">新增用户</a></tr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <tr><a href="loglist.html" th:href="@{/queryLog}">查看日志</a></tr>
+</div>
+<table class="table table-striped">
+    <tr style="text-align: center;">
+        <td>编号</td>
+        <td>姓名</td>
+        <td>手机号</td>
+        <td>身份证号</td>
+        <td>省份</td>
+        <td>城市</td>
+        <td>邮箱</td>
+        <td>备注</td>
+        <td>状态</td>
+        <td>创建时间</td>
+        <td>操作</td>
+    </tr>
+    <tr style="text-align: center;" th:each="u:${list}">
+        <td th:text="${uStat.count}">id</td>
+        <td th:text="${u.uanme}">王坤</td>
+        <td th:text="${u.phonenum}">66</td>
+        <td th:text="${u.idcard}">id</td>
+        <td th:text="${u.province}">王坤</td>
+        <td th:text="${u.city}">66</td>
+        <td th:text="${u.email}">id</td>
+        <td th:text="${u.remark}">王坤</td>
+        <div th:switch="${u.status}">
+          <span th:case="0">
+              <td>无效</td>
+          </span>
+            <span th:case="1">
+              <td>有效</td>
+          </span>
+        </div>
+
+        <td th:text="${#dates.format(u.creatdate,'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td>
+            <a href="" onclick="if(confirm('真的要删除吗?')==false)return false" th:href="@{|/del?id=${u.id}|}">删除</a>
+            <a href="" th:href="@{|/updSel?id=${u.id}|}">修改</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

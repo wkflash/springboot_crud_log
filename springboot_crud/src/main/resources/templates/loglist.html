@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body>
+<table class="table table-striped">
+    <tr style="text-align: center;">
+        <td>编号</td>
+        <td>操作人IP地址</td>
+        <td>操作请求的URL</td>
+        <td>操作动作描述</td>
+        <td>操作类和方法名</td>
+        <td>操作传参数据</td>
+        <td>操作时间</td>
+        <td>备注</td>
+        <td>操作</td>
+    </tr>
+    <tr style="text-align: center;" th:each="u:${logPojoList}">
+        <td th:text="${uStat.count}"></td>
+        <td th:text="${u.ip}"></td>
+        <td th:text="${u.url}"></td>
+        <td th:text="${u.desc}"></td>
+        <td th:text="${u.classFunction}"></td>
+        <td th:text="${u.accordParameters}"></td>
+        <td th:text="${#dates.format(u.time,'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${u.lremark}"></td>
+        <td>
+            <a href="" onclick="if(confirm('是否要删除该条日志？')==false)return false" th:href="@{|/delLog?lid=${u.lid}|}">删除</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

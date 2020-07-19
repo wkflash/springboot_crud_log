@@ -1,0 +1,34 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form align="center" action="" th:action="@{/addUser}" method="post">
+
+    <h3>添加用户</h3>
+    <br>
+    <input type="text" name="uanme" placeholder="姓名"/>
+    <br>
+    <input type="text" name="phonenum" placeholder="手机号"/>
+    <br>
+    <input type="text" name="idcard" placeholder="身份证号"/>
+    <br>
+    <input type="text" name="province" placeholder="省份"/>
+    <br>
+    <input type="text" name="city" placeholder="城市"/>
+    <br>
+    <input type="text" name="email" placeholder="邮箱"/>
+    <br>
+    <input type="text" name="remark" placeholder="备注"/>
+    <br>
+    <input type="submit" value="添加新用户"/>
+
+
+
+</form>
+
+</body>
+</html>
